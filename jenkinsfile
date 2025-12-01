@@ -1,0 +1,33 @@
+pipeline{
+    agent any 
+    stages{
+        stage("checkout"){
+            steps{
+                checkout scm
+                echo "Checked out source code"
+                git branch: 'main', url: 'https://github.com/vinodkumarthati/demo2.git'
+
+            }}
+        stage("building the image"){
+            steps{
+                sh "docker build -t vinodkumar/demo2:latest ."
+                echo" Docker image built successfully"
+            }
+        }
+        stage("running the container"){
+            steps{
+                sh "docker run -d -p 7070:70 vinodkumar/demo2:latest"
+                echo" Docker container is running on port 7070"
+        }
+    }
+    }
+    post{
+        success{
+            echo "running on http://localhost:7070"
+
+        }
+        failure{
+            echo "Build failed. Please check the logs."
+        }
+    }
+}
