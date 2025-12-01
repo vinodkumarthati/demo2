@@ -1,4 +1,8 @@
+
 FROM nginx:latest
-WORKDIR /usr/share/ngnix/html
-COPY . .
+
+WORKDIR /usr/share/nginx/html
+
+COPY index.html index.html
+
 EXPOSE 70
