@@ -16,14 +16,14 @@ pipeline{
         }
         stage("running the container"){
             steps{
-                sh "docker run -d -p 7070:70 vinodkumar/demo2:latest"
+                sh "docker run -d -p 7777:80 vinodkumar/demo2:latest"
                 echo" Docker container is running on port 7070"
         }
     }
     }
     post{
         success{
-            echo "running on http://localhost:7070"
+            echo "running on http://localhost:7777"
 
         }
         failure{

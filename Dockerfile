@@ -5,4 +5,4 @@ WORKDIR /usr/share/nginx/html
 
 COPY index.html index.html
 
-EXPOSE 70
+EXPOSE 80
